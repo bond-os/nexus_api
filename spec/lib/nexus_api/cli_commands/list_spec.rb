@@ -131,6 +131,36 @@ RSpec.describe NexusAPI::List do
     end
   end
 
+  describe '#blobstores' do
+    describe 'with mock blobstores' do
+      let(:blobstores) { [{'name' => 'default'}] }
+      before(:each) {
+        expect(@list.api).to receive(:list_blobstores).and_return(blobstores)
+      }
+
+      it 'sends the list_blobstores method to api' do
+        @list.blobstores
+      end
+
+      it 'prints the name of each blobstore by default' do
+        expect { @list.blobstores }.to output("default\n").to_stdout
+      end
+
+      it 'prints the full details of each blobstore when the full option is set' do
+        flags = { :full => true }
+        @list.options = flags
+        expect { @list.blobstores }.to output("{\"name\"=>\"default\"}\n").to_stdout
+      end
+    end
+
+    it 'passes the flags set in Thor correctly to api' do
+      expect(@list.api).to receive(:list_blobstores).with(no_args)
+      flags = { :full => true }
+      @list.options = flags
+      @list.blobstores
+    end
+  end
+
   describe '#component' do
     describe 'with mock component' do
       let(:component) { {'name' => 'name1'} }

@@ -395,6 +395,20 @@ module NexusAPI
       apply_changes(default: default_options, override: options, name: name, url: remote_url)
     end
 
+    def self.blobstore_file(name, path, options)
+      default_options = {
+        'path' => path,
+        'softQuota' => nil
+      }
+      apply_changes(default: default_options, override: options, name: name)
+    end
+
+    def self.blobstore(name, options)
+      default_options = {
+       'softQuota' => nil
+      }
+      apply_changes(default: default_options, override: options, name: name)
+    end
 
     private
 

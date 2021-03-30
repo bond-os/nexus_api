@@ -61,6 +61,11 @@ module NexusAPI
       print_set(action: :list_repositories, filter: 'name')
     end
 
+    desc 'blobstores', 'Prints out a list of all blobstores'
+    def blobstores
+      print_set(action: :list_blobstores, filter: 'name')
+    end
+
     desc 'roles', 'Prints out a list of all roles'
     def roles
       print_set(action: :list_roles, filter: 'name')
