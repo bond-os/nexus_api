@@ -8,6 +8,7 @@ module NexusAPI
         username: ENV['NEXUS_USERNAME'],
         password: ENV['NEXUS_PASSWORD'],
         hostname: ENV['NEXUS_HOSTNAME'],
+        protocol: ENV['NEXUS_PROTOCOL'] || "https",
         docker_pull_hostname: ENV['DOCKER_PULL_HOSTNAME'],
         docker_push_hostname: ENV['DOCKER_PUSH_HOSTNAME'],
         team_config: options[:team_config]
