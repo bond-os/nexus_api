@@ -5,7 +5,7 @@ module NexusAPI
     # GET /service/rest/v1/repositories (This endpoint does not paginate)
     # GET /service/rest/beta/repositories
     def list_repositories
-      @connection.get_response(endpoint: 'repositories', api_version: 'beta')
+      @connection.get_response(endpoint: 'repositories', api_version: 'v1')
     end
 
     def list_repository_names
@@ -14,7 +14,7 @@ module NexusAPI
 
     # DELETE /service/rest/beta/repositories/{repositoryName}
     def delete_repository(name:)
-      @connection.delete(endpoint: "repositories/#{name}", api_version: 'beta')
+      @connection.delete(endpoint: "repositories/#{name}", api_version: 'v1')
     end
 
     # POST /service/rest/beta/repositories/{repositoryName}/health-check
@@ -213,7 +213,7 @@ module NexusAPI
       @connection.post(
         endpoint: endpoint,
         parameters: parameters,
-        api_version: 'beta'
+        api_version: 'v1'
       )
     end
   end

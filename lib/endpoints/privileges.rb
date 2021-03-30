@@ -2,17 +2,17 @@ module NexusAPI
   class API
     # GET /service/rest/beta/security/privileges
     def list_privileges
-      @connection.get_response(endpoint: 'security/privileges', api_version: 'beta')
+      @connection.get_response(endpoint: 'security/privileges', api_version: 'v1')
     end
 
     # GET /service/rest/beta/security/privileges/{privilegeId}
     def list_privilege(privilege_id:)
-      @connection.get_response(endpoint: "security/privileges/#{privilege_id}", api_version: 'beta')
+      @connection.get_response(endpoint: "security/privileges/#{privilege_id}", api_version: 'v1')
     end
 
     # DELETE /service/rest/beta/security/privileges/{privilegeId}
     def delete_privilege(privilege_id:)
-      @connection.delete(endpoint: "security/privileges/#{privilege_id}", api_version: 'beta')
+      @connection.delete(endpoint: "security/privileges/#{privilege_id}", api_version: 'v1')
     end
 
     # POST /service/rest/beta/security/privileges/application
@@ -34,7 +34,7 @@ module NexusAPI
         # The name of the repository this privilege will grant access to (or * for all)
         'repository' => repository
       }
-      @connection.post(endpoint: 'security/privileges/repository-view', parameters: parameters, api_version: 'beta')
+      @connection.post(endpoint: 'security/privileges/repository-view', parameters: parameters, api_version: 'v1')
     end
 
     # PUT /service/rest/beta/security/privileges/repository-view/{privilegeId}

@@ -7,8 +7,8 @@ RSpec.describe NexusAPI do
     let(:user_id) { 'user_id' }
 
     describe '#list_users' do
-      it 'sends a get to /beta/security/users' do
-        url = "#{BASE_URL}/beta/security/users"
+      it 'sends a get to /v1/security/users' do
+        url = "#{BASE_URL}/v1/security/users"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_users
@@ -23,8 +23,8 @@ RSpec.describe NexusAPI do
       let(:password) { 'password' }
       let(:roles) { ['role'] }
 
-      it 'sends a post to /beta/security/users with required info' do
-        url = "#{BASE_URL}/beta/security/users"
+      it 'sends a post to /v1/security/users with required info' do
+        url = "#{BASE_URL}/v1/security/users"
         stub_request(:post, url)
           .with(body: {
             'userId' => user_id,
@@ -48,8 +48,8 @@ RSpec.describe NexusAPI do
     end
 
     describe '#delete_user' do
-      it 'sends a delete to /beta/security/users/{userId}' do
-        url = "#{BASE_URL}/beta/security/users/#{user_id}"
+      it 'sends a delete to /v1/security/users/{userId}' do
+        url = "#{BASE_URL}/v1/security/users/#{user_id}"
         stub_request(:delete, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.delete_user(user_id: user_id)

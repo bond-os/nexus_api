@@ -2,7 +2,7 @@ require 'lib/setup_api'
 
 RSpec.shared_examples 'a group repository' do
   it 'sends a post to create a repo' do
-    url = "#{BASE_URL}/beta/repositories/#{repo_type}/group"
+    url = "#{BASE_URL}/v1/repositories/#{repo_type}/group"
     stub_request(:post, url)
       .with(body: hash_including({'name' => name, 'group' => anything}))
       .with(headers: { 'Content-Type'=>'application/json' })
@@ -13,7 +13,7 @@ end
 
 RSpec.shared_examples 'a hosted repository' do
   it 'sends a post to create a repo' do
-    url = "#{BASE_URL}/beta/repositories/#{repo_type}/hosted"
+    url = "#{BASE_URL}/v1/repositories/#{repo_type}/hosted"
     stub_request(:post, url)
       .with(body: hash_including({'name' => name}))
       .with(headers: { 'Content-Type'=>'application/json' })
@@ -24,7 +24,7 @@ end
 
 RSpec.shared_examples 'a proxy repository' do
   it 'sends a post to create a repo' do
-    url = "#{BASE_URL}/beta/repositories/#{repo_type}/proxy"
+    url = "#{BASE_URL}/v1/repositories/#{repo_type}/proxy"
     stub_request(:post, url)
       .with(body: hash_including({'name' => name, 'proxy' => {
         'contentMaxAge'=>1440,'metadataMaxAge'=>1440,'remoteUrl'=>'remote_url'
@@ -43,8 +43,8 @@ RSpec.describe NexusAPI do
     include_context 'setup NexusAPI::API'
 
     describe '#list_repositories' do
-      it 'send a get to beta/repositories' do
-        url = "#{BASE_URL}/beta/repositories"
+      it 'send a get to v1/repositories' do
+        url = "#{BASE_URL}/v1/repositories"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_repositories
@@ -64,8 +64,8 @@ RSpec.describe NexusAPI do
     describe '#delete_repository' do
       let(:repo) { 'repo' }
 
-      it 'sends a delete to beta/repositories with a repository name' do
-        url = "#{BASE_URL}/beta/repositories/#{repo}"
+      it 'sends a delete to v1/repositories with a repository name' do
+        url = "#{BASE_URL}/v1/repositories/#{repo}"
         stub_request(:delete, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         expect(api.delete_repository(name: repo)).to be(true)

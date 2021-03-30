@@ -7,8 +7,8 @@ RSpec.describe NexusAPI do
     let(:id) { 'id' }
 
     describe '#list_roles' do
-      it 'sends a get to /beta/security/roles' do
-        url = "#{BASE_URL}/beta/security/roles"
+      it 'sends a get to /v1/security/roles' do
+        url = "#{BASE_URL}/v1/security/roles"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_roles
@@ -22,8 +22,8 @@ RSpec.describe NexusAPI do
       let(:privileges) { ['privilege'] }
       let(:roles) { ['role'] }
 
-      it 'sends a post to /beta/security/roles with required info' do
-        url = "#{BASE_URL}/beta/security/roles"
+      it 'sends a post to /v1/security/roles with required info' do
+        url = "#{BASE_URL}/v1/security/roles"
         stub_request(:post, url)
           .with(body: {
             'id' => id,
@@ -42,8 +42,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/roles with a default description' do
-        url = "#{BASE_URL}/beta/security/roles"
+      it 'sends a post to /v1/security/roles with a default description' do
+        url = "#{BASE_URL}/v1/security/roles"
         stub_request(:post, url)
           .with(body: {
             'id' => id,
@@ -56,8 +56,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/roles with a default privileges' do
-        url = "#{BASE_URL}/beta/security/roles"
+      it 'sends a post to /v1/security/roles with a default privileges' do
+        url = "#{BASE_URL}/v1/security/roles"
         stub_request(:post, url)
           .with(body: {
             'id' => id,
@@ -70,8 +70,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/roles with a default roles' do
-        url = "#{BASE_URL}/beta/security/roles"
+      it 'sends a post to /v1/security/roles with a default roles' do
+        url = "#{BASE_URL}/v1/security/roles"
         stub_request(:post, url)
           .with(body: {
             'id' => id,
@@ -86,8 +86,8 @@ RSpec.describe NexusAPI do
     end
 
     describe '#list_role' do
-      it 'sends a get to /beta/security/roles/{id}?source=default' do
-        url = "#{BASE_URL}/beta/security/roles/#{id}?source=default"
+      it 'sends a get to /v1/security/roles/{id}?source=default' do
+        url = "#{BASE_URL}/v1/security/roles/#{id}?source=default"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_role(id: id)
@@ -96,8 +96,8 @@ RSpec.describe NexusAPI do
     end
 
     describe '#delete_role' do
-      it 'sends a delete to /beta/security/roles/{roleId}' do
-        url = "#{BASE_URL}/beta/security/roles/#{id}"
+      it 'sends a delete to /v1/security/roles/{roleId}' do
+        url = "#{BASE_URL}/v1/security/roles/#{id}"
         stub_request(:delete, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.delete_role(id: id)

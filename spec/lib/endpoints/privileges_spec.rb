@@ -7,8 +7,8 @@ RSpec.describe NexusAPI do
     let(:privilege_id) { 'privilege_id' }
 
     describe '#list_privileges' do
-      it 'sends a get to /beta/security/privileges' do
-        url = "#{BASE_URL}/beta/security/privileges"
+      it 'sends a get to /v1/security/privileges' do
+        url = "#{BASE_URL}/v1/security/privileges"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_privileges
@@ -17,8 +17,8 @@ RSpec.describe NexusAPI do
     end
 
     describe '#list_privilege' do
-      it 'sends a get to /beta/security/privileges/{privilegeId}' do
-        url = "#{BASE_URL}/beta/security/privileges/#{privilege_id}"
+      it 'sends a get to /v1/security/privileges/{privilegeId}' do
+        url = "#{BASE_URL}/v1/security/privileges/#{privilege_id}"
         stub_request(:get, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.list_privilege(privilege_id: privilege_id)
@@ -27,8 +27,8 @@ RSpec.describe NexusAPI do
     end
 
     describe '#delete_privilege' do
-      it 'sends a delete to /beta/security/privileges/{privilegeId}' do
-        url = "#{BASE_URL}/beta/security/privileges/#{privilege_id}"
+      it 'sends a delete to /v1/security/privileges/{privilegeId}' do
+        url = "#{BASE_URL}/v1/security/privileges/#{privilege_id}"
         stub_request(:delete, url)
           .with(headers: { 'Content-Type'=>'application/json' })
         api.delete_privilege(privilege_id: privilege_id)
@@ -43,8 +43,8 @@ RSpec.describe NexusAPI do
       let(:format) { 'format' }
       let(:repository) { 'repository' }
 
-      it 'sends a post to /beta/security/privileges/repository-view with required info' do
-        url = "#{BASE_URL}/beta/security/privileges/repository-view"
+      it 'sends a post to /v1/security/privileges/repository-view with required info' do
+        url = "#{BASE_URL}/v1/security/privileges/repository-view"
         stub_request(:post, url)
           .with(body: {
             'name' => name,
@@ -63,8 +63,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/privileges/repository-view with a default description' do
-        url = "#{BASE_URL}/beta/security/privileges/repository-view"
+      it 'sends a post to /v1/security/privileges/repository-view with a default description' do
+        url = "#{BASE_URL}/v1/security/privileges/repository-view"
         stub_request(:post, url)
           .with(body: {
             'name' => name,
@@ -82,8 +82,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/privileges/repository-view with a default action' do
-        url = "#{BASE_URL}/beta/security/privileges/repository-view"
+      it 'sends a post to /v1/security/privileges/repository-view with a default action' do
+        url = "#{BASE_URL}/v1/security/privileges/repository-view"
         stub_request(:post, url)
           .with(body: {
             'name' => name,
@@ -101,8 +101,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/privileges/repository-view with a default format' do
-        url = "#{BASE_URL}/beta/security/privileges/repository-view"
+      it 'sends a post to /v1/security/privileges/repository-view with a default format' do
+        url = "#{BASE_URL}/v1/security/privileges/repository-view"
         stub_request(:post, url)
           .with(body: {
             'name' => name,
@@ -120,8 +120,8 @@ RSpec.describe NexusAPI do
         expect(a_request(:post, url)).to have_been_made
       end
 
-      it 'sends a post to /beta/security/privileges/repository-view with a default repository' do
-        url = "#{BASE_URL}/beta/security/privileges/repository-view"
+      it 'sends a post to /v1/security/privileges/repository-view with a default repository' do
+        url = "#{BASE_URL}/v1/security/privileges/repository-view"
         stub_request(:post, url)
           .with(body: {
             'name' => name,
